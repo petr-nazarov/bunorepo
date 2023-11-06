@@ -25,7 +25,6 @@ bun setup
 # Todo 
 - [x] eslint
 - [x] prettier 
-- [ ] tsc 
 - [ ] semver releases 
 - [x] commitizen 
 - [x] commitlint
