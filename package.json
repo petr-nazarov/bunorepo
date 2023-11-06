@@ -24,6 +24,7 @@
     "@commitlint/cli": "^18.2.0",
     "@commitlint/config-conventional": "^18.1.0",
     "@release-it/bumper": "^5.1.0",
+    "@release-it/conventional-changelog": "^7.0.2",
     "check-dependency-version-consistency": "^4.1.0",
     "commitizen": "^4.3.0",
     "commitlint": "^18.2.0",
@@ -48,7 +49,7 @@
     "npm": {
       "publish": false
     },
-   "plugins": {
+    "plugins": {
       "@release-it/conventional-changelog": {
         "infile": "CHANGELOG.md",
         "preset": {
