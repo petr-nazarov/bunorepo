@@ -1,4 +1,4 @@
-# crypto-p2p-matcher
+# Bun monorepo template
 
 To install dependencies:
 

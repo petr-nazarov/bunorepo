@@ -4,6 +4,9 @@
   "version": "0.0.1",
   "type": "module",
   "private": true,
+  "scripts": {
+    "release": "release-it"
+  },
   "dependencies": {
     "config": "workspace:*"
   },
@@ -12,5 +15,16 @@
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
+  } ,
+ "release-it": {
+  "git": false,
+  "plugins": {
+    "@release-it/bumper": {
+      "out": {
+        "file": "package.json",
+        "path": ["dependencies.config"]
+      }
+    }
   }
+}
 }
