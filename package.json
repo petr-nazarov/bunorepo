@@ -17,7 +17,8 @@
     "clean:node_modules": "rm -rf apps/*/node_modules && rm -rf packages/*/node_modules && rm -rf node_modules",
     "clean:dist": "rm -rf apps/*/dist && rm -rf packages/*/dist",
     "fix": "biome check . --apply",
-    "release": "release-it"
+    "release": "release-it",
+    "test": "bun test"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.3.3",

@@ -5,7 +5,8 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "release": "release-it"
+    "release": "release-it",
+    "test": "bun test"
   },
   "dependencies": {
     "config": "workspace:*"

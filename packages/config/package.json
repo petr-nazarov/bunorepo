@@ -4,7 +4,8 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "release": "release-it"
+    "release": "release-it",
+    "test": "bun test"
   },
   "devDependencies": {
     "bun-types": "latest"
