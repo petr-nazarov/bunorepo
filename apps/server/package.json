@@ -17,15 +17,15 @@
   "peerDependencies": {
     "typescript": "^5.0.0"
   } ,
- "release-it": {
-  "git": false,
-  "plugins": {
-    "@release-it/bumper": {
-      "out": {
-        "file": "package.json",
-        "path": ["dependencies.config"]
+  "release-it": {
+    "git": false,
+    "plugins": {
+      "@release-it/bumper": {
+        "out": {
+          "file": "package.json",
+          "path": ["dependencies.config"]
+        }
       }
     }
   }
-}
 }

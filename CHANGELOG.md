@@ -1,5 +1,7 @@
 
 
+## [0.3.1](https://github.com/petr-nazarov/bun-momorepo-template/compare/0.3.0...0.3.1) (2023-11-06)
+
 ## 0.3.0 (2023-11-06)
 
 
