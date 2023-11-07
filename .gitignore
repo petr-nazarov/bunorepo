@@ -63,6 +63,9 @@ web_modules/
 
 \*.tsbuildinfo
 
+# Turborepo files 
+/**/.turbo
+
 # Optional npm cache directory
 
 .npm
