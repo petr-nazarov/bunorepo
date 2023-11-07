@@ -1,7 +1,7 @@
 {
   "name": "config",
   "module": "index.ts",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "type": "module",
   "scripts": {
     "test": "bun test"
@@ -15,5 +15,4 @@
   "release-it": {
     "git": false
   }
-
 }

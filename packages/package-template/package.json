@@ -5,7 +5,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev" : "bun dev",
+    "dev": "bun dev",
     "build": "bun build ./src/index.ts --target=bun --outdir=dist",
     "test": "bun test",
     "start": "bun run ./dist/index.js",
@@ -26,7 +26,9 @@
       "@release-it/bumper": {
         "out": {
           "file": "package.json",
-          "path": ["dependencies.config"]
+          "path": [
+            "dependencies.config"
+          ]
         }
       }
     }
