@@ -1,5 +1,11 @@
 # config
 
+## 0.3.7
+
+### Patch Changes
+
+- 3a36f2b: add ci
+
 ## 0.3.6
 
 ### Patch Changes
