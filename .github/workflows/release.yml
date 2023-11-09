@@ -5,6 +5,10 @@ on:
     # Pattern matched against refs/tags
     tags:        
       - '*@*' 
+env:
+  LOCAL_PACKAGE_NAME: ''
+  LOCAL_PACKAGE_VERSION: ''
+  LOCAL_PACKAGE_PATH: ''
 jobs:
   get-packages-metadata:
     name:  Get package metadata
