@@ -1,8 +1,8 @@
 {
 	"$schema": "https://unpkg.com/@changesets/config@2.3.1/schema.json",
 	"changelog": "@changesets/cli/changelog",
-  "title": "chore(release): ${version}",
-  "commit": ["@changesets/cli/commit", { "skipCI": false }],
+  "title": "chore(release): ",
+  "commit": ["./commit.js", { "skipCI": false }],
 	"fixed": [],
 	"linked": [],
 	"access": "restricted",
