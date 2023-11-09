@@ -1,5 +1,11 @@
 # config
 
+## 0.3.3
+
+### Patch Changes
+
+- a62fc0d: Testing changes
+
 ## 0.3.2
 
 ### Patch Changes
