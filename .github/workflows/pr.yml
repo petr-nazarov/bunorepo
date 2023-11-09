@@ -3,7 +3,7 @@ on:
   pull_request:
 jobs:
   determine-affected-packages:
-    name: Determine affected packages and labels
+    name: Determine affected packages and add labels
     permissions: write-all
     runs-on: ubuntu-latest
     outputs:
@@ -32,16 +32,17 @@ jobs:
         id: affected-packages
         run: echo "var=$(bun turbo run build --filter=...[origin/master] --dry-run=json | jq -r '.packages' | sed '/\/\//d' | tr -d '\n' )" >> $GITHUB_OUTPUT
 
-      - id: affectged-packages-on-new-lines
+      - id: affected-packages-on-new-lines
         run: echo "var=$( echo ${{ steps.affected-packages.outputs.var }} | jq -r '.[]' )" >> GITHUB_OUTPUT
 
+      - run: echo ${{ steps.affected-packages-on-new-lines.outputs.var }}
 
       - name: Add labels
         uses: actions-ecosystem/action-add-labels@v1
         with:
           github_token: ${{ github.token }}
           labels: | 
-            ${{ steps.affectged-packages-on-new-lines.outputs.var  }}
+            ${{ steps.affected-packages-on-new-lines.outputs.var  }}
 
   check-and-test:
     name: Run code checks and tests
