@@ -1,5 +1,12 @@
 # config
 
+## 0.3.5
+
+### Patch Changes
+
+- 58f51df: add ci cd
+- eedda76: add ci cd
+
 ## 0.3.4
 
 ### Patch Changes

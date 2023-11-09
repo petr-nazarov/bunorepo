@@ -1,5 +1,15 @@
 # server
 
+## 0.3.8
+
+### Patch Changes
+
+- 58f51df: add ci cd
+- eedda76: add ci cd
+- Updated dependencies [58f51df]
+- Updated dependencies [eedda76]
+  - config@0.3.5
+
 ## 0.3.7
 
 ### Patch Changes
