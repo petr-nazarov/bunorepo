@@ -3,7 +3,8 @@ on:
   pull_request:
 jobs:
   determine-affected-packages:
-    name: Determine affected packages
+    name: Determine affected packages and labels
+    permissions: write-all
     runs-on: ubuntu-latest
     outputs:
       affected : ${{ steps.affected-packages.outputs.var }}
@@ -32,7 +33,7 @@ jobs:
         run: echo "var=$(bun turbo run build --filter=...[origin/master] --dry-run=json | jq -r '.packages' | sed '/\/\//d' | tr -d '\n' )" >> $GITHUB_OUTPUT
 
 
-      - name: add label
+      - name: Add labels
         uses: actions-ecosystem/action-add-labels@v1
         with:
           github_token: ${{ github.token }}
