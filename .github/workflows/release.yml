@@ -1,0 +1,12 @@
+name: Release
+on:
+  push:
+    # Pattern matched against refs/tags
+    tags:        
+      - '**' 
+jobs:
+  get-packagest-to-update:
+    runs-on: ubuntu-latest
+    name: Determine packages to update
+    steps:
+      - run: echo Hello
