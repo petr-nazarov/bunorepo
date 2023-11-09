@@ -9,6 +9,7 @@
     "build": "bun build ./src/index.ts --target=bun --outdir=dist",
     "test": "bun test",
     "start": "bun run ./dist/index.js",
+    "check": "biome ci .",
     "fix": "biome check . --apply"
   },
   "dependencies": {
