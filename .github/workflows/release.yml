@@ -10,4 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     name:  Get package name, path and version
     steps:
-      - run: echo ${{ github.ref_name }}
+      - name: Get the package name
+        run: echo "LOCAL_PACKAGE_NAME=$( echo ${{ github.ref_name }} | cut -d "@" -f 1 )" >> $GITHUB_ENV
+      - name: Print the package name 
+        run: echo $LOCAL_PACKAGE_NAME
