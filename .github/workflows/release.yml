@@ -21,7 +21,7 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
-    name: Check code and run tests for ${{ env.LOCAL_PACKAGE_NAME }}
+    name: Check code and run tests for 
     steps:
       - name: Checkout
         uses: actions/checkout@v3
