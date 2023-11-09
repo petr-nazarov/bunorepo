@@ -1,5 +1,11 @@
 # server
 
+## 0.3.9
+
+### Patch Changes
+
+- ad63208: add new function
+
 ## 0.3.8
 
 ### Patch Changes
