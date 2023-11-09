@@ -1,5 +1,29 @@
 # server
 
+## 0.3.7
+
+### Patch Changes
+
+- e5b058a: Change commit versions
+- 9239482: AA
+- 9239482: Change commit versions
+- 9239482: A
+- 9239482: Change commit mesages
+- 9239482: Add release commit message
+- 9239482: AA
+- 9239482: Add new release commit
+- 9239482: AA
+- Updated dependencies [e5b058a]
+- Updated dependencies [9239482]
+- Updated dependencies [9239482]
+- Updated dependencies [9239482]
+- Updated dependencies [9239482]
+- Updated dependencies [9239482]
+- Updated dependencies [9239482]
+- Updated dependencies [9239482]
+- Updated dependencies [9239482]
+  - config@0.3.4
+
 ## 0.3.6
 
 ### Patch Changes
