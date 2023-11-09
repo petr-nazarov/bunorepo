@@ -23,7 +23,7 @@ jobs:
 
       - name: Determine affected packages 
         id: affected-packages
-        run: echo "var=$(turbo run test --filter=...[origin/master] --dry-run=json | jq -r '.packages[]' | sed '/\/\//d')" >> $GITHUB_OUTPUT
+        run: echo "var=$(bun turbo run build --filter=...[origin/master] --dry-run=json | jq -r '.packages[]' | sed '/\/\//d')" >> $GITHUB_OUTPUT
   check-and-test:
     name: Run code checks and tests
     needs: determine-affected-packages
