@@ -33,7 +33,7 @@ jobs:
         run: echo "var=$(bun turbo run build --filter=...[origin/master] --dry-run=json | jq -r '.packages' | sed '/\/\//d' | tr -d '\n' )" >> $GITHUB_OUTPUT
 
       - id: affected-packages-on-new-lines
-        run: echo "var=$( ${{ steps.affected-packages.outputs.var }} | jq -r '.[]' )" >> GITHUB_OUTPUT
+        run: echo "var=$(bun turbo run build --filter=...[origin/master] --dry-run=json | jq -r '.packages[]' | sed '/\/\//d' | tr -d '\n' )" >> $GITHUB_OUTPUT
 
       - run: echo ${{ steps.affected-packages-on-new-lines.outputs.var }}
 
