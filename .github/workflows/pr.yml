@@ -15,6 +15,24 @@ jobs:
         with:
           bun-version: latest
 
+      - name: package-a changed in last commit?
+        id: changedAction
+        uses: Trampoline-CX/action-turbo-changed@v1
+        with:
+          workspace: server
+          from: origin/master
+
+      - name: package-a changed in last commit?
+        id: changedAction2
+        uses: Trampoline-CX/action-turbo-changed@v1
+        with:
+          workspace: config 
+          from: origin/master
+
+      - run: echo ${{ steps.changedAction.outputs.changed }}
+      - run: echo ${{ steps.changedAction2.outputs.changed }}
+
+
 
       - name: Install
         run: bun install
