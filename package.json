@@ -16,13 +16,15 @@
     "cm": "git add . && git-cz",
     "check": "bun run check:versions && bun check:code",
     "check:versions": "check-dependency-version-consistency .",
-    "check:code": "biome ci .",
+    "check:code": "bun run check:code:root && bun run check:code:packages",
+    "check:code:root": "biome ci .",
+    "check:code:packages": "turbo run check --parallel",
     "clean": "yarn clean:node_modules && yarn clean:dist",
     "clean:node_modules": "rm -rf apps/*/node_modules && rm -rf packages/*/node_modules && rm -rf node_modules",
     "clean:dist": "rm -rf apps/*/dist && rm -rf packages/*/dist",
-    "fix": "turbo run fix --parallel",
+    "fix": "biome check . --apply && turbo run fix --parallel",
     "generate:package": "/bin/bash ./bin/generate-package.sh",
-    "doc:changes": "changeset",
+    "doc:changes": "changeset && git add ./.changeset && git commit -m\"docs(changeset): add changest\" ",
     "release": "changeset version && changeset tag && git push --follow-tags"
   },
   "devDependencies": {
