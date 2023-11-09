@@ -1,5 +1,12 @@
 # server
 
+## 0.3.3
+
+### Patch Changes
+
+- 057a215: Add new functionality
+- b7bccc9: Small change
+
 ## 0.3.2
 
 ### Patch Changes
