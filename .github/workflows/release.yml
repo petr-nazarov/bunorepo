@@ -6,9 +6,9 @@ on:
     tags:        
       - '*@*' 
 jobs:
-  get-packages-to-update:
-    runs-on: ubuntu-latest
+  get-packages-metadata:
     name:  Get package metadata
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -20,8 +20,9 @@ jobs:
         run: echo "LOCAL_PACKAGE_PATH=$( [ -d "./apps/${LOCAL_PACKAGE_NAME}" ] && echo "apps" || echo "packages" )" >> $GITHUB_ENV
 
   test:
-    runs-on: ubuntu-latest
     name: Check code and run tests for 
+    needs: get-packages-metadata
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
