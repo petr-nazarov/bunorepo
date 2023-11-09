@@ -1,5 +1,11 @@
 # server
 
+## 0.3.5
+
+### Patch Changes
+
+- c95af07: Add subtract funtionality
+
 ## 0.3.4
 
 ### Patch Changes
