@@ -6,7 +6,7 @@ jobs:
     name: Determine affected packages
     runs-on: ubuntu-latest
     outputs:
-      affected-packages : ${{ steps.affected-packages.outputs.var }}
+      affected : ${{ steps.affected-packages.outputs.var }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -23,7 +23,7 @@ jobs:
 
       - name: Determine affected packages 
         id: affected-packages
-        run: echo "var=$(bun turbo run build --filter=...[origin/master] --dry-run=json | jq -r '.packages[]' | sed '/\/\//d')" >> $GITHUB_OUTPUT
+        run: echo "var=$(bun turbo run build --filter=...[origin/master] --dry-run=json | jq -r '.packages' | sed '/\/\//d')" >> $GITHUB_OUTPUT
   check-and-test:
     name: Run code checks and tests
     needs: determine-affected-packages
@@ -41,5 +41,5 @@ jobs:
         run: bun install
 
       - name: Show changed
-        run: echo ${{ needs.determine-affected-packages.outputs.affected-packages }}
+        run: echo ${{ needs.determine-affected-packages.outputs.affected }}
 
