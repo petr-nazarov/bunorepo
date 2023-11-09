@@ -1,7 +1,7 @@
 {
   "name": "config",
   "module": "index.ts",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "type": "module",
   "scripts": {
     "test": "bun test"
