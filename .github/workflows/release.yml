@@ -46,7 +46,7 @@ jobs:
         run: bun install
 
       - name: Run code cheks
-        run: bun check
+        run: bun check:versions && bun check:code:root && bun check:code:packages --scope=${{ needs.get-packages-metadata.outputs.package-name }}
 
       - name: Run tests 
         run: bun run test --scope=${{ needs.get-packages-metadata.outputs.package-name }}

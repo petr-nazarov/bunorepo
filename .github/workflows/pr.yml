@@ -1,0 +1,29 @@
+name: Pull request
+on:
+  pull_request:
+jobs:
+  check-and-test:
+    name: Run code checks and tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          -fetch-depth: 2
+
+      - uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+
+      - name: Install
+        run: bun install
+
+      - name: Run code cheks
+        run: bun check:versions && bun check:code:root && bun check:code:packages --filter='[${{ github.event.before }}...${{ github.event.after }}]'
+
+
+      - name: Run tests 
+        run: bun run test --filter='[${{ github.event.before }}...${{ github.event.after }}]'
+
+
