@@ -6,16 +6,16 @@ jobs:
     name: Run code checks and tests
     runs-on: ubuntu-latest
     env:
-      TURBO_REF_FILTER: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
+      TURBO_RUN_FILTER: ${{ github.event_name == 'pull_request' && '...[origin/master]' || '...[HEAD^]' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
         with:
           -fetch-depth: 0
 
-      - uses: oven-sh/setup-bun@v1
         with:
           bun-version: latest
+      - uses: oven-sh/setup-bun@v1
 
 
 
@@ -26,13 +26,5 @@ jobs:
         run: echo $TURBO_REF_FILTER
 
       - name: Show changed
-        run: bun turbo run test --filter=...[$TURBO_REF_FILTER] --dry-run=json
-
-      - name: Run code cheks
-        run: bun check:versions && bun check:code:root && bun check:code:packages --filter='[${{ github.event.before }}...${{ github.event.after }}]'
-
-
-      - name: Run tests 
-        run: bun run test --filter='[${{ github.event.before }}...${{ github.event.after }}]'
-
+        run: bun turbo run test --filter=[$TURBO_RUN_FILTER] --dry-run=json
 
