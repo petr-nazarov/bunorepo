@@ -5,23 +5,30 @@ on:
     # Pattern matched against refs/tags
     tags:        
       - '*@*' 
-env:
-  LOCAL_PACKAGE_NAME: ''
-  LOCAL_PACKAGE_VERSION: ''
-  LOCAL_PACKAGE_PATH: ''
 jobs:
   get-packages-metadata:
     name:  Get package metadata
     runs-on: ubuntu-latest
+    outputs:
+      package-name : ${{ steps.get-package-name.outputs.var }}
+      package-version : ${{ steps.get-package-version.outputs.var }}
+      package-path : ${{ steps.get-package-path.outputs.var }}
+      
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
       - name: Get the package name
-        run: echo "LOCAL_PACKAGE_NAME=$( echo ${{ github.ref_name }} | cut -d "@" -f 1 )" >> $GITHUB_ENV
+        id: get-package-name
+        run: echo "var=$( echo ${{ github.ref_name }} | cut -d "@" -f 1 )" >> $GITHUB_OUTPUT
+
       - name: Get the package version
-        run: echo "LOCAL_PACKAGE_VERSION=$( echo ${{ github.ref_name }} | cut -d "@" -f 2 )" >> $GITHUB_ENV
+        id: get-packages-version
+        run: echo "var=$( echo ${{ github.ref_name }} | cut -d "@" -f 2 )" >> $GITHUB_OUTPUT
+
       - name: Get the package path 
-        run: echo "LOCAL_PACKAGE_PATH=$( [ -d "./apps/${LOCAL_PACKAGE_NAME}" ] && echo "apps" || echo "packages" )" >> $GITHUB_ENV
+        id: get-package-path
+        run: echo "var=$( [ -d "./apps/${LOCAL_PACKAGE_NAME}" ] && echo "apps" || echo "packages" )" >> $GITHUB_OUTPUT
 
   test:
     name: Check code and run tests for 
@@ -42,6 +49,6 @@ jobs:
         run: bun check
 
       - name: Run tests 
-        run: bun run test --scope=${{ env.LOCAL_PACKAGE_NAME }}
+        run: bun run test --scope=${{ needs.get-packages-metadata.outputs.package-name }}
 
 
