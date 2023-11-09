@@ -8,9 +8,35 @@ on:
 jobs:
   get-packages-to-update:
     runs-on: ubuntu-latest
-    name:  Get package name, path and version
+    name:  Get package metadata
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: Get the package name
         run: echo "LOCAL_PACKAGE_NAME=$( echo ${{ github.ref_name }} | cut -d "@" -f 1 )" >> $GITHUB_ENV
-      - name: Print the package name 
-        run: echo $LOCAL_PACKAGE_NAME
+      - name: Get the package version
+        run: echo "LOCAL_PACKAGE_VERSION=$( echo ${{ github.ref_name }} | cut -d "@" -f 2 )" >> $GITHUB_ENV
+      - name: Get the package path 
+        run: echo "LOCAL_PACKAGE_PATH=$( [ -d "./apps/${LOCAL_PACKAGE_NAME}" ] && echo "apps" || echo "packages" )" >> $GITHUB_ENV
+
+  test:
+    runs-on: ubuntu-latest
+    name: Check code and run tests for ${{ GITHUB_ENV.LOCAL_PACKAGE_NAME }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Install
+        run: bun install
+
+      - name: Run code cheks
+        run: bun check
+
+      - name: Run tests 
+        run: bun run test --scope=${{ GITHUB_ENV.LOCAL_PACKAGE_NAME }}
+
+
