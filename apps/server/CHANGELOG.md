@@ -1,5 +1,11 @@
 # server
 
+## 0.3.4
+
+### Patch Changes
+
+- 55b627c: Edit server
+
 ## 0.3.3
 
 ### Patch Changes
