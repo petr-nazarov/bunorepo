@@ -1,4 +1,4 @@
-import { getAddMessage } from '@changeset/cli/commit';
+const commit = require('@changesets/cli/commit')
 
 
 const getVersionMessage = async (releasePlan, options) => {
@@ -15,9 +15,7 @@ const getVersionMessage = async (releasePlan, options) => {
 `;
 };
 
-const defaultCommitFunctions = {
-  getAddMessage,
-  getVersionMessage
-};
-
-export default defaultCommitFunctions;
+module.exports = {
+  getAddMessage: commit.default.getAddMessage,
+  getVersionMessage: getVersionMessage
+}
