@@ -4,7 +4,9 @@
   "version": "0.3.11",
   "type": "module",
   "scripts": {
-    "test": "bun test"
+    "test": "bun test",
+    "fix": "biome check . --apply",
+    "check": "biome ci ."
   },
   "devDependencies": {
     "bun-types": "latest"
