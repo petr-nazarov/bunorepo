@@ -1,5 +1,11 @@
 # config
 
+## 0.3.6
+
+### Patch Changes
+
+- 010d2d5: add ci
+
 ## 0.3.5
 
 ### Patch Changes

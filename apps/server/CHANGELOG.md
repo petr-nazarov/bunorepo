@@ -1,5 +1,13 @@
 # server
 
+## 0.3.10
+
+### Patch Changes
+
+- 010d2d5: add ci
+- Updated dependencies [010d2d5]
+  - config@0.3.6
+
 ## 0.3.9
 
 ### Patch Changes
