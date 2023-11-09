@@ -4,6 +4,7 @@
   "version": "0.3.11",
   "type": "module",
   "scripts": {
+    "build": "echo done",
     "test": "bun test",
     "fix": "biome check . --apply",
     "check": "biome ci ."

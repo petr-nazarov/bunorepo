@@ -2,11 +2,11 @@ name: Pull request
 on:
   pull_request:
 jobs:
-  check-and-test:
-    name: Run code checks and tests
+  determine-affected-packages:
+    name: Determine affected packages
     runs-on: ubuntu-latest
-    env:
-      TURBO_RUN_FILTER: ${{ github.event_name == 'pull_request' && '...[origin/master]' || '...[HEAD^]' }}
+    outputs:
+      affected-packages : ${{ steps.affected-packages.outputs.var }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -21,9 +21,25 @@ jobs:
       - name: Install
         run: bun install
 
-      - name: Turbo ref filter 
-        run: echo $TURBO_REF_FILTER
+      - name: Determine affected packages 
+        id: affected-packages
+        run: echo "var=$(turbo run test --filter=...[origin/master] --dry-run=json | jq -r '.packages[]' | sed '/\/\//d')" >> $GITHUB_OUTPUT
+  check-and-test:
+    name: Run code checks and tests
+    needs: determine-affected-packages
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Install
+        run: bun install
 
       - name: Show changed
-        run: bun turbo run test --filter=[$TURBO_RUN_FILTER] --dry-run=json
+        run: echo ${{ needs.determine-affected-packages.outputs.affected-packages }}
 
