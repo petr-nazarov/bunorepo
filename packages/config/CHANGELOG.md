@@ -1,5 +1,11 @@
 # config
 
+## 0.3.9
+
+### Patch Changes
+
+- AAA
+
 ## 0.3.8
 
 ### Patch Changes
