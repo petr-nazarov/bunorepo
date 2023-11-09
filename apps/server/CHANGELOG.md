@@ -1,5 +1,13 @@
 # server
 
+## 0.3.15
+
+### Patch Changes
+
+- AA
+- Updated dependencies
+  - config@0.3.11
+
 ## 0.3.14
 
 ### Patch Changes
