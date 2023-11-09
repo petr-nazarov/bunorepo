@@ -26,7 +26,7 @@ jobs:
         run: echo $TURBO_REF_FILTER
 
       - name: Show changed
-        run: bun turbo run test --filter=[origin/master...HEAD] --dry-run=json
+        run: bun turbo run test --filter=...[$TURBO_REF_FILTER] --dry-run=json
 
       - name: Run code cheks
         run: bun check:versions && bun check:code:root && bun check:code:packages --filter='[${{ github.event.before }}...${{ github.event.after }}]'
