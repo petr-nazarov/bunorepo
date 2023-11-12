@@ -4,7 +4,6 @@ on:
 jobs:
   determine-affected-packages:
     name: Determine affected packages and add labels
-    permissions: write-all
     runs-on: ubuntu-latest
     outputs:
       affected : ${{ steps.affected-packages.outputs.var }}
@@ -36,9 +35,9 @@ jobs:
 
 
   check-and-test:
-    name: ${{ matrix.packages }} Run code checks and tests
-    # run-name: ${{ matrix.packages }}
+    name: "(${{ matrix.packages }}): Run code checks and tests"
     needs: determine-affected-packages
+    permissions: write-all
     strategy: 
       matrix: 
         packages: ${{ fromJSON(needs.determine-affected-packages.outputs.affected) }}
