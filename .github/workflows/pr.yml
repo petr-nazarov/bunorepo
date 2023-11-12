@@ -36,7 +36,8 @@ jobs:
 
 
   check-and-test:
-    name: Run code checks and tests
+    name: ${{ matrix.packages }} Run code checks and tests
+    # run-name: ${{ matrix.packages }}
     needs: determine-affected-packages
     strategy: 
       matrix: 
@@ -55,7 +56,7 @@ jobs:
         uses: actions-ecosystem/action-add-labels@v1
         with:
           github_token: ${{ github.token }}
-          labels: ${{ matrix.package }}
+          labels: ${{ matrix.packages }}
 
       - name: Install
         run: bun install
