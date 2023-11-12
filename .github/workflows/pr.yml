@@ -7,6 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       affected : ${{ steps.affected-packages.outputs.var }}
+      labels : ${{ steps.labels.outputs.var }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -33,7 +34,11 @@ jobs:
 
       - name: Compose labels names
         id: labels
-        run: echo "$( ${{ steps.affected-packages.outputs.var }} | jq '. | map(\"package:\" + .)' )"
+        run: echo "var=$( echo ${{ steps.affected-packages.outputs.var }} | jq '. | map(\"package:\" + .)' )" >> GITHUB_OUTPUT
+      
+      - name: Add labels
+        run: echo ${{ steps.labels.outputs.var }}
+
 
 
 
