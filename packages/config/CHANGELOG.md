@@ -1,33 +1,6 @@
 # config
 
 ## 0.3.11
-
-### Patch Changes
-
-- AA
-
-## 0.3.10
-
-### Patch Changes
-
-- AA
-
-## 0.3.9
-
-### Patch Changes
-
-- AAA
-
-## 0.3.8
-
-### Patch Changes
-
-- AA
-
-## 0.3.7
-
-### Patch Changes
-
 - 3a36f2b: add ci
 
 ## 0.3.6
