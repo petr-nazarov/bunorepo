@@ -55,7 +55,7 @@ jobs:
         uses: actions-ecosystem/action-add-labels@v1
         with:
           github_token: ${{ github.token }}
-          labels: ${{ matrix.packages }}
+          labels: package:${{ matrix.packages }}
 
       - name: Install
         run: bun install
