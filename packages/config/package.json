@@ -16,8 +16,5 @@
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
-  },
-  "release-it": {
-    "git": false
   }
 }
