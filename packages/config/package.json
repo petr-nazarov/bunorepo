@@ -4,8 +4,10 @@
   "version": "0.3.11",
   "type": "module",
   "scripts": {
+    "get:version": "../../bin/get-package-version.sh",
     "build": "echo done",
     "test": "bun test",
+    "test:coverage": "bun test --coverage",
     "fix": "biome check . --apply",
     "check": "biome ci ."
   },

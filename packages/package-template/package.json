@@ -5,9 +5,11 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "get:version": "../../bin/get-package-version.sh",
     "dev": "bun dev",
     "build": "bun build ./src/index.ts --target=bun --outdir=dist",
     "test": "bun test",
+    "test:coverage": "bun test --coverage",
     "start": "bun run ./dist/index.js",
     "check": "biome ci .",
     "fix": "biome check . --apply"
