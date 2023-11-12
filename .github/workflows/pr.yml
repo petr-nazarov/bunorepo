@@ -34,12 +34,6 @@ jobs:
 
 
 
-      - name: Add labels
-        uses: actions-ecosystem/action-add-labels@v1
-        with:
-          github_token: ${{ github.token }}
-          labels: | 
-            $( ${{ steps.affected-packages.outputs.var  }} | jq -r '.[]') 
 
   check-and-test:
     name: Run code checks and tests
@@ -56,6 +50,12 @@ jobs:
       - uses: oven-sh/setup-bun@v1
         with:
           bun-version: latest
+
+      - name: Add labels
+        uses: actions-ecosystem/action-add-labels@v1
+        with:
+          github_token: ${{ github.token }}
+          labels: ${{ matrix.package }}
 
       - name: Install
         run: bun install
