@@ -51,11 +51,21 @@ jobs:
         with:
           bun-version: latest
 
-      - name: Add labels
-        uses: actions-ecosystem/action-add-labels@v1
+      # - name: Add labels
+      #   uses: actions-ecosystem/action-add-labels@v1
+      #   with:
+      #     github_token: ${{ github.token }}
+      #     labels: package:${{ matrix.packages }}
+
+      - uses: actions/github-script@v6
         with:
-          github_token: ${{ github.token }}
-          labels: package:${{ matrix.packages }}
+          script: |
+            github.rest.issues.addLabels({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ["triage"]
+            })
 
       - name: Install
         run: bun install
