@@ -1,4 +1,7 @@
-# Bun monorepo template
+#  Bunorepo - a bun monorepo template
+
+To use this template run: 
+`bun create github.com/petr-nazarov/bun-momorepo-template'
 
 To install dependencies:
 
