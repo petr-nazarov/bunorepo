@@ -30,6 +30,8 @@ lib-cov
 coverage
 \*.lcov
 
+# codecov 
+.codecov
 # nyc test coverage
 
 .nyc_output
