@@ -13,7 +13,7 @@
     "dev": "turbo run dev --parallel",
     "build": "turbo run build",
     "test": "turbo run test --parallel",
-    "test:latest": "turbo run build --filter=...[origin/master] --dry-run=json ",
+    "test:latest": "turbo run build --filter=...[origin/main] --dry-run=json ",
     "cm": "git add . && git-cz",
     "check": "bun run check:versions && bun check:code",
     "check:versions": "check-dependency-version-consistency .",
@@ -24,7 +24,7 @@
     "clean:node_modules": "rm -rf apps/*/node_modules && rm -rf packages/*/node_modules && rm -rf node_modules",
     "clean:dist": "rm -rf apps/*/dist && rm -rf packages/*/dist",
     "fix": "biome check . --apply && turbo run fix --parallel",
-    "generate:package": "/bin/bash ./bin/generate-package.sh",
+    "generate:package": "turbo generate workspace --copy https://github.com/petr-nazarov/bunorepo/tree/main/packages/package-template",
     "doc:changes": "changeset && git add ./.changeset && git commit -m\"docs(changeset): add changest\" ",
     "release": "changeset version && changeset tag && git push --follow-tags"
   },

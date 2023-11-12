@@ -30,7 +30,7 @@ jobs:
 
       - name: Determine affected packages 
         id: affected-packages
-        run: echo "var=$(bun turbo run build --filter=...[origin/master] --dry-run=json | jq -r '.packages' | sed '/\/\//d' | tr -d '\n' )" >> $GITHUB_OUTPUT
+        run: echo "var=$(bun turbo run build --filter=...[origin/main] --dry-run=json | jq -r '.packages' | sed '/\/\//d' | tr -d '\n' )" >> $GITHUB_OUTPUT
 
 
   check-and-test:
@@ -69,5 +69,11 @@ jobs:
 
       - name: Run tests for package
         run: bun run test --scope=${{ matrix.packages }}
+  finish-pr-check:
+    name: PR Check compleated 
+    needs: check-and-test
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "PR is ready to be merged" 
 
 
