@@ -177,4 +177,5 @@ dist
 # Finder (MacOS) folder config
 .DS_Store
 
-
+# Example workspace 
+apps/example

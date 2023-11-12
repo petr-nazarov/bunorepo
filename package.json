@@ -13,7 +13,7 @@
     "dev": "turbo run dev --parallel",
     "build": "turbo run build",
     "test": "turbo run test --parallel",
-    "test:latest": "turbo run build --filter=...[origin/master] --dry-run=json ",
+    "test:latest": "turbo run build --filter=...[origin/main] --dry-run=json ",
     "cm": "git add . && git-cz",
     "check": "bun run check:versions && bun check:code",
     "check:versions": "check-dependency-version-consistency .",
