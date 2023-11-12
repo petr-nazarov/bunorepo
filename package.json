@@ -24,7 +24,7 @@
     "clean:node_modules": "rm -rf apps/*/node_modules && rm -rf packages/*/node_modules && rm -rf node_modules",
     "clean:dist": "rm -rf apps/*/dist && rm -rf packages/*/dist",
     "fix": "biome check . --apply && turbo run fix --parallel",
-    "generate:package": "/bin/bash ./bin/generate-package.sh",
+    "generate:package": "turbo generate workspace --copy https://github.com/petr-nazarov/bunorepo/tree/main/packages/package-template",
     "doc:changes": "changeset && git add ./.changeset && git commit -m\"docs(changeset): add changest\" ",
     "release": "changeset version && changeset tag && git push --follow-tags"
   },
