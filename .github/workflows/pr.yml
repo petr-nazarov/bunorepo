@@ -1,0 +1,73 @@
+name: Pull request
+on:
+  pull_request:
+jobs:
+  determine-affected-packages:
+    name: Determine affected packages and add labels
+    runs-on: ubuntu-latest
+    outputs:
+      affected : ${{ steps.affected-packages.outputs.var }}
+      labels : ${{ steps.labels.outputs.var }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+
+      - name: Install
+        run: bun install
+
+      - name: Run version checks
+        run: bun run check:versions 
+
+      - name: Run root lint and format
+        run: bun run check:code:root
+
+      - name: Determine affected packages 
+        id: affected-packages
+        run: echo "var=$(bun turbo run build --filter=...[origin/master] --dry-run=json | jq -r '.packages' | sed '/\/\//d' | tr -d '\n' )" >> $GITHUB_OUTPUT
+
+
+  check-and-test:
+    name: "(${{ matrix.packages }}): Run code checks and tests"
+    needs: determine-affected-packages
+    permissions: write-all
+    strategy: 
+      matrix: 
+        packages: ${{ fromJSON(needs.determine-affected-packages.outputs.affected) }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.addLabels({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ["package:${{ matrix.packages }}"]
+            })
+
+
+      - name: Install
+        run: bun install
+
+      - name: Run code check for package 
+        run: bun run check:code:packages --scope=${{ matrix.packages }}
+
+      - name: Run tests for package
+        run: bun run test --scope=${{ matrix.packages }}
+
+
