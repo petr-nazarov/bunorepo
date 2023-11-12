@@ -34,7 +34,7 @@ jobs:
 
       - name: Compose labels names
         id: labels
-        run: echo "var=$( echo ${{ steps.affected-packages.outputs.var }} | jq '. | map(\"package:\" + .)' )" >> GITHUB_OUTPUT
+        run: echo "var=$( ${{ steps.affected-packages.outputs.var }} >> jq '. | map(\"package:\" + .)' )" >> GITHUB_OUTPUT
       
       - name: Add labels
         run: echo ${{ steps.labels.outputs.var }}

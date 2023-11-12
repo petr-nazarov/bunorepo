@@ -19,7 +19,7 @@
     "check:versions": "check-dependency-version-consistency .",
     "check:code": "bun run check:code:root && bun run check:code:packages",
     "check:code:root": "biome ci .",
-    "check:code:packages": "turbo run check --parallel",
+    "check:code:packages": "turbo run check --parallel --output-logs=none",
     "clean": "yarn clean:node_modules && yarn clean:dist",
     "clean:node_modules": "rm -rf apps/*/node_modules && rm -rf packages/*/node_modules && rm -rf node_modules",
     "clean:dist": "rm -rf apps/*/dist && rm -rf packages/*/dist",
