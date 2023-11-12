@@ -31,6 +31,15 @@ jobs:
         id: affected-packages
         run: echo "var=$(bun turbo run build --filter=...[origin/master] --dry-run=json | jq -r '.packages' | sed '/\/\//d' | tr -d '\n' )" >> $GITHUB_OUTPUT
 
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.addLabels({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ${{ steps.affected-packages.outputs.var }}
+            })
 
 
 
@@ -51,21 +60,7 @@ jobs:
         with:
           bun-version: latest
 
-      # - name: Add labels
-      #   uses: actions-ecosystem/action-add-labels@v1
-      #   with:
-      #     github_token: ${{ github.token }}
-      #     labels: package:${{ matrix.packages }}
 
-      - uses: actions/github-script@v6
-        with:
-          script: |
-            github.rest.issues.addLabels({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              labels: ["triage"]
-            })
 
       - name: Install
         run: bun install
