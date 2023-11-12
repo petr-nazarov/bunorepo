@@ -69,5 +69,11 @@ jobs:
 
       - name: Run tests for package
         run: bun run test --scope=${{ matrix.packages }}
+  finish-pr-check:
+    name: PR Check compleated 
+    needs: check-and-test
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "PR is ready to be merged" 
 
 
