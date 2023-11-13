@@ -1,7 +1,7 @@
 {
   "name": "server",
   "module": "index.ts",
-  "version": "0.3.15",
+  "version": "0.4.0",
   "type": "module",
   "private": true,
   "scripts": {

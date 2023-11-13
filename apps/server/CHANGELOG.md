@@ -1,8 +1,24 @@
 # server
 
+## 0.4.0
+
+### Minor Changes
+
+- 096de6f: Add multiplication function
+
+### Patch Changes
+
+- df1c300: Add changest behaviour
+- df1c300: Update package scoped tasks
+- 308d2d0: add docker file to server
+- Updated dependencies [df1c300]
+- Updated dependencies [df1c300]
+  - config@0.3.12
+
 ## 0.3.15
 
 ### Patch Changes
+
 - Updated dependencies
   - config@0.3.11
 

@@ -1,6 +1,14 @@
 # config
 
+## 0.3.12
+
+### Patch Changes
+
+- df1c300: Add changest behaviour
+- df1c300: Update package scoped tasks
+
 ## 0.3.11
+
 - 3a36f2b: add ci
 
 ## 0.3.6
