@@ -15,6 +15,7 @@ If you have features to suggest feel free to open an Issue or, better a PR :-)
 # Usage 
 ## Requirements 
  - bun
+ - doppler - used as a env vars storage. If you dont need remove it
  - (Optional) Add changesets bot for your PRs https://github.com/apps/changeset-bot
 
 To use this template run: 
@@ -36,6 +37,11 @@ You can run `bun release` to release the changed packages. It will automatically
 
 ## Labels: 
 The logic of labels tries to follow this lable documentation https://github.com/ManageIQ/guides/blob/master/labels.md (Kudos!)
+
+## Doppler 
+Eather run doppler login in project root dirrectory or export DOPPLER_TOKEN in your sh.
+The repo assumes you have a doppler configured with the porject name "bunorepo". Change it to your project name in package.json files
+Github Actions requre DOPPLER_TOKEN to be set in the repository secrets
 
 # Components 
  - `check-dependency-version-consistency` Check that all the repos require the same versions of packages.
