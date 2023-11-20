@@ -39,6 +39,8 @@ jobs:
     strategy: 
       matrix: 
         packages: ${{ fromJSON(needs.determine-affected-packages.outputs.affected) }}
+    env:
+      DOPPLER_TOKEN: ${{secrets.DOPPLER_TOKEN}}
     runs-on: ubuntu-latest
 
     steps:
