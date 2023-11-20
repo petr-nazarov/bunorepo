@@ -5,12 +5,13 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "doppler": "doppler run -p bunorepo -c $APP_CONFIG -- ",
     "get:version": "../../bin/get-package-version.sh",
     "release": "echo release",
-    "dev": "bun dev",
+    "dev": "APP_CONFIG=dev bun run doppler bun ./src/index.ts ",
     "build": "bun build ./src/index.ts --target=bun --outdir=dist",
-    "test": "bun test",
-    "test:coverage": "bun test --coverage",
+    "test": "APP_CONFIG=test bun run doppler bun test",
+    "test:coverage": "APP_CONFIG=test bun run doppler bun test --coverage",
     "start": "bun run ./dist/index.js",
     "check": "biome ci .",
     "fix": "biome check . --apply"
