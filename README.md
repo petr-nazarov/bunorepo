@@ -29,19 +29,19 @@ bun setup # setups husky for pre-commit checks
 
 # Need to know: 
 ## Pull request 
-An opened pull request starts a `pr.yml` check. It expects you to have a `changesets` that describes the changesets to affectes packages. You can create a changeset easaly by running `bun run doc:changes` and follow the questions in the cli.
+An opened pull request starts a `pr.yml` check. It expects you to have a `changesets` that describes the changesets to affected packages. You can create a changeset easily by running `bun run doc:changes` and follow the questions in the cli.
 The github action will determine the changed packages, and run tests only for them.
 
 ## Release
 You can run `bun release` to release the changed packages. It will automatically bump the version of affected packages (based on changesetes) and run a `release.yml` github action for them.
 
 ## Labels: 
-The logic of labels tries to follow this lable documentation https://github.com/ManageIQ/guides/blob/master/labels.md (Kudos!)
+The logic of labels tries to follow this label documentation https://github.com/ManageIQ/guides/blob/master/labels.md (Kudos!)
 
 ## Doppler 
-Eather run doppler login in project root dirrectory or export DOPPLER_TOKEN in your sh.
+Either run doppler login in project root dirrectory or export DOPPLER_TOKEN in your sh.
 The repo assumes you have a doppler configured with the porject name "bunorepo". Change it to your project name in package.json files
-Github Actions requre DOPPLER_TOKEN to be set in the repository secrets
+Github Actions require DOPPLER_TOKEN to be set in the repository secrets
 
 # Components 
  - `check-dependency-version-consistency` Check that all the repos require the same versions of packages.

@@ -5,7 +5,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "doppler": "doppler run --no-read-env -p bunorepo -c $APP_CONFIG -- ",
+    "doppler": "doppler run -p bunorepo -c $APP_CONFIG -- ",
     "get:version": "../../bin/get-package-version.sh",
     "release": "echo release",
     "dev": "APP_CONFIG=dev bun run doppler bun ./src/index.ts ",
