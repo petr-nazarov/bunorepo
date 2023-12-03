@@ -1,0 +1,10 @@
+{
+  "name": "unleash",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "doppler": "doppler run -p vault_unleash -c master -- ",
+    "start": "bun run doppler docker compose up -d",
+    "stop": "bun run doppler docker compose down"
+  }
+}
