@@ -19,7 +19,7 @@ If you have features to suggest feel free to open an Issue or, better a PR :-)
  - (Optional) Add changesets bot for your PRs https://github.com/apps/changeset-bot
 
 To use this template run: 
-`bun create github.com/petr-nazarov/bunorepo` or clone it as a new repo
+`bun create github.com/petr-nazarov/bunorepo <your_monorepo_name>` or clone it as a new repo
 
 To install dependencies:
 ```bash
